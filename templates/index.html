@@ -1,0 +1,187 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>My Resume!</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<!-- stylesheet css -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/templatemo-blue.css' %}">
+
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse">
+
+<!-- preloader section -->
+<div class="preloader">
+	<div class="sk-spinner sk-spinner-wordpress">
+       <span class="sk-inner-circle"></span>
+     </div>
+</div>
+
+<!-- header section -->
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				{% for profile in profile %}
+				<img src="{{profile.dp.url}}" class="img-responsive img-circle tm-border" alt="profile_pic">
+				<hr>
+				<h1 class="tm-title bold shadow">Hi, I am {{profile.name}}.</h1>
+				<h1 class="white bold shadow">An Aspiring Programmer!</h1>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- about and skills section -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-6 col-sm-12">
+			<div class="about">
+				<h3 class="accent">Extra Curriculam</h3><br>
+				{% for extra in extra %}
+					<h2>Year: {{extra.curri_year}}</h2>
+					<p><b>{{extra.curri_desc}}</b></p>
+					<hr style="border-color:#60A9F0;">
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-12">
+			<div class="skills">
+				<h2 class="white">Skills & Tools</h2>
+				{% for skill in skill %}
+				<strong>{{skill.skill_name}}</strong>
+				<span class="pull-right">{{skill.skill_rate}}%</span>
+					<div class="progress">
+						<div class="progress-bar progress-bar-primary" role="progressbar" 
+                        aria-valuenow="{{skill.skill_rate}}" aria-valuemin="0" aria-valuemax="100" style="width: {{skill.skill_rate}}%;"></div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- education and languages -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-8 col-sm-12">
+			<div class="education">
+				<h2 class="white">Education</h2>
+					<div class="education-content">
+						{% for edu in edu %}
+						<h4 class="education-title accent">{{edu.quali}} -- {{edu.special}}</h4>
+						<h4 class="education-title accent">Board/Univeristy: {{edu.board}}</h4>
+							<div class="education-school">
+								<h5><b>Institute:</b> {{edu.insti}}</h5><span></span>
+								<h5><b>Passing Year:</b> {{edu.year}}</h5><span></span>
+								<h5><b>Grades:</b> {{edu.grades}}</h5>
+								<hr style="border-color: white;">
+							</div>
+						<!--<p class="education-description"></p>-->
+						{% endfor %}
+					</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-12">
+			<div class="languages">
+				<h2>Languages</h2>
+					<ul>
+						{% for lang in lang %}
+							<li>{{lang.lang}}</li>
+						{% endfor %}
+					</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Hobbies -->
+
+<section class="container">
+	<div class="row">
+		<div class="col-md-12 col-sm-12">
+			<div class="hobbies">
+				<h2 class="white">Hobbies</h2>
+				<div class="hobbies-list">
+					{% for profile in profile %}
+					<h4 class="hobbies-title">{{profile.hobbies}}</h4>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- contact and experience -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-4 col-sm-12">
+			<div class="contact">
+				<h2>Contact</h2>
+					{% for profile in profile %}
+					<p><i class="fa fa-map-marker"></i> {{profile.add}}</p>
+					<p><i class="fa fa-phone"></i> {{profile.phone}}</p>
+					<p><i class="fa fa-envelope"></i> {{profile.email}}</p>
+					{% endfor %}
+					<!--<p><i class="fa fa-globe"></i> www.company.com</p> -->
+			</div>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div class="experience">
+				<h2 class="white">Projects Works</h2>
+					<div class="experience-content">
+						{% for proj in proj %}
+							<h4 class="experience-title accent">{{proj.proj_name}}</h4>
+							<!--<h5></h5><span></span>
+							<h5></h5>-->
+							<p class="education-description" style="font-size:large;">{{proj.proj_descp}}</p>
+							<hr style="border-color: white;"><span></span>
+						{% endfor %}
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- footer section -->
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<p>Copyright &copy; Gobinda Deb Powered by Django!</p>
+				<ul class="social-icons">
+					<li><a href="https://www.facebook.com/gobinda.deb.3/" class="fa fa-facebook"></a></li>
+					<li><a href="https://github.com/Gobinda17" class="fa fa-github"></a></li>
+					<li><a href="https://www.instagram.com/deb_gobinda/" class="fa fa-instagram"></a></li>
+					<li><a href="https://www.linkedin.com/in/gobinda-deb-74984614b/" class="fa fa-linkedin"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!-- javascript js -->	
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>	
+<script src="{% static 'js/jquery.backstretch.min.js' %}"></script>
+<!--global variable for custom.js-->
+<script>
+	var Url1 = "{% static 'images/tm-bg-slide-1.jpg' %}";
+	var Url2 = "{% static 'images/tm-bg-slide-2.jpg' %}";
+	var Url3 = "{% static 'images/tm-bg-slide-3.jpg' %}";
+</script>
+<script src="{% static 'js/custom.js' %}"></script>
+	
+
+</body>
+</html>
